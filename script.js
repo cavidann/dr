@@ -1,40 +1,20 @@
-var main = document.createElement("div");
-main.className = "main";
-document.body.appendChild(main);
+var i = 30;
+var input = document.getElementById("input");
+var input1 = document.getElementById("input1");
+var p = document.getElementById("p");
 
-main.style.width = "102px";
-main.style.height = "764px";
-main.style.backgroundColor = "blue";
-main.style.position = "relative";
+var count = setInterval(function say() {
+    i--;
+    if (i == 0) {
+        input.style.visibility = "hidden";
+        input1.style.visibility = "hidden";
+        clearInterval(count);
+    }
+    p.innerHTML = i;
+}, 1000);
 
-var img = document.createElement("img");
-main.appendChild(img);
-
-img.setAttribute("src", "img/body.jpg");
-img.setAttribute("height", "768");
-img.setAttribute("width", "1024")
-
-
-
-
-
-
-
-
-
-main.addEventListener("click", function(event) {
-    var x = event.clientX;
-    var y = event.clientY;
-    var point = document.createElement("div");
-    main.appendChild(point);
-    point.style.width = "10px";
-    point.style.height = "10px";
-    point.style.backgroundColor = "red";
-    point.style.position = "absolute";
-    point.style.left = x - 13 + "px";
-    point.style.top = y - 12 + "px";
+document.getElementById("submit").addEventListener("click", function() {
+    if (input.value != " " && input1.value != " ") {
+        clearInterval(count);
+    }
 })
-
-// point.addEventListener("click", function(event) {
-//     child.parentNode.removeChild(child);
-// })
